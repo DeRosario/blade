@@ -1,0 +1,61 @@
+.disconnect-wrapper {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  transform: translateY(-50%);
+  user-select: none;
+
+  i {
+    font-size: 1.7vw;
+    cursor: pointer;
+  }
+}
+
+// .menu {
+//   position: absolute;
+//   top: 8vh;
+//   right: -0.8vw;
+// }
+
+.menu {
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  top: 90%;
+  right: .7%;
+  width: 7vw;
+  height: 4.8vh;
+  background: #D8433A;
+  border-radius: .25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: opacity .5s ease-out;
+  -moz-transition: opacity .5s ease-out;
+  -ms-transition: opacity .5s ease-out;
+  -o-transition: opacity .5s ease-out;
+  transition: opacity .5s ease-out;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+
+  .arrow-up {
+    position: absolute;
+    top: -.9vh;
+    right: .3vw;
+    width: 0;
+    height: 0;
+    border-left: 1.5vh solid transparent;
+    border-right: 1.5vh solid transparent;
+    border-bottom: 1.5vh solid #D8433A;
+  }
+
+  .logout {
+    p {
+      color: #fff;
+      font-size: .8vw;
+    }
+  }
+}

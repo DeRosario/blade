@@ -1,0 +1,193 @@
+  <div class="business-view-options" *ngIf="_options.businessView">
+    Show
+    <select (change)="changeNbRowByPage($event.target.value)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+    </select>
+    entries
+  </div>
+
+  <div class="wrapper" [ngStyle]="!_options.businessView ? {'box-shadow': '0.3vw 0.5vw 1.8vw rgba(0, 0, 0, 0.26)'} : {'max-height': '94%', 'overflow-x': 'hidden', 'height': '100%', 'border-radius': '0.5vw'}">
+    <div class="empty-data" *ngIf="datas.length === 0 && _options.businessView">
+      <p>No data to display</p>
+    </div>
+    <table *ngIf="_options !== undefined"
+      [ngStyle]="!_options.businessView ? {'box-shadow': '0.3vw 0.5vw 1.8vw rgba(0, 0, 0, 0.26)'} : {}">
+      <thead>
+        <tr *ngIf="!_options.businessView">
+          <td *ngFor="let option of _options.columns" [ngStyle]="{'width': option.width}">
+            <div><img *ngIf="option.icon !== ''" [src]="option.icon">
+              {{option.name}}
+              <div class="arrows-sort" *ngIf="option.sort">
+                <i class="fa fa-caret-up" (click)="updateSorts(option.key, 'ASC', option.type)"
+                  [ngClass]="(sortByColumns.column === option.key && sortByColumns.orderBy === 'ASC') ? 'selected-sort-button' : ''"></i>
+                <i class="fa fa-caret-down" (click)="updateSorts(option.key, 'DESC', option.type)"
+                  [ngClass]="(sortByColumns.column === option.key && sortByColumns.orderBy === 'DESC') ? 'selected-sort-button' : ''"></i>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="_options.businessView">
+          <td class="business-view-title" *ngFor="let option of _options.columns" [ngStyle]="{'width': option.width}">
+            <div>
+              {{option.name}}
+            </div>
+          </td>
+        </tr>
+      </thead>
+      <div class="parameters-wrapper" *ngIf="_options.filter.enable">
+        <div class="filters-wrapper">
+          <div class="query-wrapper">
+            <div class="item-container" *ngFor="let filter of filters; let j = index">
+              <div class="row">
+                <select (change)="onChangeFilterColumn($event.target.value, j)">
+                  <option [value]="i" *ngFor="let column of _options.columns; let i = index"
+                    [selected]="filter.column === column.key">{{column.name}}</option>
+                </select>
+              </div>
+              <div class="row">
+                <input *ngIf="filter.type !== 'date' && filter.association === undefined" class="value"
+                  [type]="(filter.type === 'date' ? 'date':'text')" [(ngModel)]="filter.value"
+                  (keydown.enter)="onValidateFilter(filter, j)">
+                <input *ngIf="filter.type === 'date'" class="value" type="date"
+                  [value]="filter.value | date:'yyyy-MM-dd'" (change)="changeDate(filter, $event.target.value, j)">
+                <select class="select-value" *ngIf="filter.association !== undefined"
+                  (change)="onChangeValueAssociation($event.target.value, j)">
+                  <option [value]="association" *ngFor="let association of objectKeys(filter.association)"
+                    [selected]="filter.value === association">{{filter.association[association]}}</option>
+                </select>
+                <button type="button" (click)="onValidateFilter(filter, j)">OK</button>
+              </div>
+              <div class="params-wrapper">
+                <div class="row">
+                  <input (change)="onChangeOperator(j, 'equal', 'equal')" type="checkbox"
+                    [checked]="filter.operator === 'equal'"
+                    [disabled]="filter.type !== 'number' && filter.type !== 'string' && filter.type !== 'date'"
+                    id="equal"><label for="equal">Equal</label>
+                  <input (change)="onChangeOperator(j, 'include', 'include')" type="checkbox"
+                    [checked]="filter.operator === 'include'" [disabled]="filter.type !== 'string'" id="include"><label
+                    for="include">Include</label>
+                </div>
+                <div class="row">
+                  <input (change)="onChangeOperator(j, 'supOrEq', 'superior or equal')" type="checkbox"
+                    [checked]="filter.operator === 'supOrEq'"
+                    [disabled]="filter.type !== 'number' && filter.type !== 'date'" id="supOrEq"><label
+                    for="supOrEq">Superior or equal</label>
+                  <input (change)="onChangeOperator(j, 'infOrEq', 'inferior or equal')" type="checkbox"
+                    [checked]="filter.operator === 'infOrEq'"
+                    [disabled]="filter.type !== 'number' && filter.type !== 'date'" id="infOrEq"><label
+                    for="infOrEq">Inferior or equal</label>
+                </div>
+                <div class="row">
+                  <input (change)="onChangeOperator(j, 'sup', 'superior')" type="checkbox"
+                    [checked]="filter.operator === 'sup'"
+                    [disabled]="filter.type !== 'number' && filter.type !== 'date'" id="sup"><label
+                    for="sup">Superior</label>
+                  <input (change)="onChangeOperator(j, 'inf', 'inferior')" type="checkbox"
+                    [checked]="filter.operator === 'inf'"
+                    [disabled]="filter.type !== 'number' && filter.type !== 'date'" id="inf"><label
+                    for="inf">Inferior</label>
+                  <input (change)="onChangeOperator(j, 'exist', 'exist')" type="checkbox"
+                    [checked]="filter.operator === 'exist'"
+                    [disabled]="filter.type !== 'boolean' && filter.type !== 'image'" id="exist"><label
+                    for="exist">Exist</label>
+                </div>
+              </div>
+            </div>
+            <button class="new-item-btn" (click)="addItem()">+ Add Item</button>
+          </div>
+          <div class="operations-wrapper">
+            <div *ngFor="let operation of operations; let i = index;" class="operation">
+              {{operation.name}} {{operation.operatorTitle}}
+              <span class="value" *ngIf="operation.type === 'date'"> {{operation.value | date:'MM-dd-yyyy'}}</span>
+              <span class="value" *ngIf="operation.type !== 'date' && operation.association === undefined">
+                {{operation.value}}</span>
+              <span class="value" *ngIf="operation.association !== undefined">
+                {{operation.association[operation.value]}}</span>
+              <span class="remove" (click)="removeFilter(i)">x</span>
+            </div>
+          </div>
+        </div>
+        <div class="options-wrapper">
+          <div class="select-nb-entries">show
+            <select (change)="changeNbRowByPage($event.target.value)">
+              <option *ngFor="let number of _options.filter.numbersShow" [value]="number">{{ number }}</option>
+            </select>
+            entries</div>
+          <button type="button" class="reset-btn" (click)="resetFilter()">RESET FILTER</button>
+          <button type="button" (click)="onClickCustomBtn()"
+            *ngIf="_options.customButton !== undefined">{{_options.customButton}}</button>
+        </div>
+      </div>
+      <div class="background-filters" *ngIf="_options.filter.enable"></div>
+      <tbody>
+        <tr *ngFor="let data of datasDisplayed; let i = index" [ngClass]="{'clickable': _options.clickRows.clickable}"
+          [style.background-color]="i % 2 === 0 ? _options.colorRows.peer : _options.colorRows.odd"
+          (click)="_options.clickRows.clickable ? clickLine(data) : ''">
+          <td *ngFor="let column of _options.columns"
+            [ngStyle]="{ 'text-align': column.align, 'width': column.width, 'padding': column.padding !== undefined ? column.padding : '0.5vh 1.5vw', 'word-break': column.wordBreak }">
+            <div *ngIf="column.type === 'image' && data[column.key] !== 'N/A'" class="img-container">
+              <img *ngFor="let img of data[column.key]" [src]="img">
+            </div>
+            <div class="actions" *ngIf="column.type === 'actions'">
+              <button
+                [ngStyle]="{'flex-direction': _options.actions.editButton.display, 'color': _options.actions.editButton.color }"
+                *ngIf="_options.actions.editButton.enable" (click)="onEdit(data, i)"><img
+                  [src]="_options.actions.editButton.icon" alt="edit button">
+                {{ _options.actions.editButton.text }}</button>
+              <button
+                [ngStyle]="{'flex-direction': _options.actions.blockButton.display, 'color': _options.actions.blockButton.color }"
+                *ngIf="_options.actions.blockButton.enable" (click)="onBlock(data)"><img
+                  [src]="_options.actions.blockButton.icon" alt="block button">
+                {{ _options.actions.editButton.text }}</button>
+              <button
+                [ngStyle]="{'flex-direction': _options.actions.deleteButton.display, 'color': _options.actions.deleteButton.color }"
+                *ngIf="_options.actions.deleteButton.enable" (click)="onDelete(data, i)"><img
+                  [src]="_options.actions.deleteButton.icon" alt="delete button">
+                {{ _options.actions.deleteButton.text }}</button>
+            </div>
+            <div *ngIf="column.type === 'number' && data[column.key] !== 'N/A'">
+              {{data[column.key] | number}}
+            </div>
+            <div *ngIf="column.type === 'check'">
+              <input type="checkbox" [checked]="data[column.key]" (click)="onToggle(data)">
+            </div>
+            <div
+              *ngIf="column.type !== 'check' && column.type !== 'number' && column.type !== 'image' && column.type !== 'date' && column.type !== 'actions' && column.association === undefined || data[column.key] === 'N/A'"
+              [innerHTML]="data[column.key] | lineBreaker:','"></div>
+            <div
+              *ngIf="column.type !== 'check' && column.type !== 'number' && column.type !== 'image' && column.type === 'date' && column.type !== 'actions' && column.association === undefined && data[column.key] !== 'N/A'"
+              [innerHTML]="data[column.key] | dateFormatter"></div>
+            <div *ngIf="column.type !== 'check' && column.type === 'string' && column.association !== undefined">
+              {{column.association[data[column.key]]}}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bottom" *ngIf="_options.pagination.enabled && !_options.businessView">
+      <div class="numberEntries"
+        *ngIf="_options.pagination.showEntries === undefined || _options.pagination.showEntries">
+        <p>Showing <span>{{entriesStart}}</span> to <span>{{entriesEnd}}</span> of <span>{{totalEntries}}</span> entries
+        </p>
+      </div>
+      <div class="buttons-pagination" *ngIf="_options.pagination.enabled">
+        <button class="notCurrentPage previous" (click)="onPrevious()"
+          *ngIf="datasPagination.length > 1">Previous</button>
+        <button class="items-pagination" (click)="changePages(0)"
+          [ngClass]="{'currentPage': currentPage === 0, 'notCurrentPage': currentPage !== 0}">1</button>
+        <span *ngIf="datasPagination.length > 6 && currentPage + 1 > 4">...</span>
+        <button class="items-pagination" *ngFor="let page of pagination | slice:paginationBegin:paginationEnd;"
+          (click)="changePages(page - 1)"
+          [ngClass]="{'currentPage': currentPage === page - 1, 'notCurrentPage': currentPage !== page - 1}">{{page}}</button>
+        <span *ngIf="datasPagination.length > 6 && currentPage + 1 < datasPagination.length - 3">...</span>
+        <button class="items-pagination" *ngIf="datasPagination.length > 1"
+          (click)="changePages(datasPagination.length - 1)"
+          [ngClass]="{'currentPage': currentPage === datasPagination.length - 1, 'notCurrentPage': currentPage !== datasPagination.length - 1}">{{datasPagination.length}}</button>
+        <button class="notCurrentPage next" (click)="onNext()" *ngIf="datasPagination.length > 1">Next</button>
+      </div>
+    </div>
+  </div>

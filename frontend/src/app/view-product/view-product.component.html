@@ -1,0 +1,61 @@
+<div class="wrapper" *ngIf="productInformations !== undefined">
+  <div class="main-title">
+    <p>{{productInformations.getName()}}</p>
+  </div>
+
+  <div class="content-informations">
+    <div>
+      <p><b>Category :</b> {{productInformations.getCategory()}}</p>
+      <p><b>Company :</b> {{productInformations.getCompany()}}</p>
+      <p><b>Price :</b> {{productInformations.getPrice()}} €</p>
+      <p><b>Description :</b> {{productInformations.getDescription()}}</p>
+    </div>
+    <div class="complementary">
+      <div *ngIf="productInformations.getCategory() === 'keyboards'">
+        <p><b>Type :</b> {{productInformations.getType()}}</p>
+      </div>
+      <div *ngIf="productInformations.getCategory() === 'mouses'">
+        <p><b>Buttons :</b> {{productInformations.getButtons()}}</p>
+      </div>
+      <div *ngIf="productInformations.getCategory() === 'screens'">
+        <p><b>Inches :</b> {{productInformations.getInches()}} "</p>
+        <p><b>Hz :</b> {{productInformations.getHz()}} Hz</p>
+        <div class="screens-connectors">
+          <div>
+            <p><b>Connectors :</b></p>
+          </div>
+          <div class="connectors">
+            <p><b>Display Ports :</b> {{productInformations.getConnectors().getDisplayPort()}}</p>
+            <p><b>Hdmi Ports :</b> {{productInformations.getConnectors().getHdmi()}}</p>
+            <p><b>VGA Ports :</b> {{productInformations.getConnectors().getHdmi()}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-stocks">
+    <div class="title-wrapper">
+      <p class="title">Stock Management</p>
+    </div>
+    <div class="content">
+      <p class="stocks">{{getStockData()}}</p>
+    </div>
+    <div class="actions-stock">
+      <div class="wrapper-remove-all">
+        <button class="remove-all-stock" (click)="removeAll()">REMOVE ALL</button>
+      </div>
+      <div class="wrapper-remove-some">
+        <input type="number" [(ngModel)]="removeSomeStock" min="0">
+        <button class="remove-some-stock" (click)="removeSome()">REMOVE</button>
+      </div>
+      <div class="wrapper-add">
+        <input type="number" [(ngModel)]="addSomeStock" min="0">
+        <button class="add-stock" (click)="addSome()">ADD</button>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

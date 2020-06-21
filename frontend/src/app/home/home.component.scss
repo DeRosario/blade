@@ -1,0 +1,17 @@
+.main-title {
+  position: relative;
+  text-align: center;
+
+  p {
+    font-weight: bold;
+    font-size: 2vw;
+    color: #323131;
+  }
+}
+
+.main-table {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+}

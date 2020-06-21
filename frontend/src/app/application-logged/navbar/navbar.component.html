@@ -1,0 +1,9 @@
+<div class="disconnect-wrapper">
+  <i class="material-icons" (click)="openMenu(open)">account_circle</i>
+</div>
+<div class="menu" [ngClass]="open ? 'active' : ''">
+  <div class="arrow-up"></div>
+  <div class="logout">
+    <p (click)="onLogout()">Log out</p>
+  </div>
+</div>

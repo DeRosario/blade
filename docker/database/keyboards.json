@@ -1,0 +1,79 @@
+[{
+    "name": "Corsair K55",
+    "price": 47.05,
+    "stock": 0,
+    "company": "Corsair",
+    "description": "Decription Corsair K55",
+    "type": "azerty"
+  },
+  {
+    "name": "Corsair K70 MK.2",
+    "price": 149.99,
+    "stock": 1,
+    "company": "Corsair",
+    "description": "Description Corsair K70 MK.2",
+    "type": "azerty"
+  },
+  {
+    "name": "Corsair K95 RGB Platinum",
+    "price": 161.03,
+    "stock": 2,
+    "company": "Corsair",
+    "description": "Description Corsair K95 RGB Platinum",
+    "type": "azerty"
+  }, {
+    "name": "Razer Blackwidow Elite",
+    "price": 116.00,
+    "stock": 3,
+    "company": "Razer",
+    "description": "Description Razer Blackwidow Elite",
+    "type": "azerty"
+  },
+  {
+    "name": "Razer Ornata Chroma",
+    "price": 86.00,
+    "stock": 4,
+    "company": "Razer",
+    "description": "Description Razer Ornata Chroma",
+    "type": "azerty"
+  },
+  {
+    "name": "Razer Cynosa Chroma",
+    "price": 75.00,
+    "stock": 5,
+    "company": "Razer",
+    "description": "Description Cynosa Chroma",
+    "type": "qwerty"
+  },
+  {
+    "name": "Razer Huntsman",
+    "price": 124.30,
+    "stock": 6,
+    "company": "Razer",
+    "description": "Description Razer Huntsman",
+    "type": "qwerty"
+  },
+  {
+    "name": "Logitech G213 Prodigy",
+    "price": 59.04,
+    "stock": 7,
+    "company": "Logitech",
+    "description": "Description Logitech G213 Prodigy",
+    "type": "qwerty"
+  },
+  {
+    "name": "Logitech G910 Orion Spectrum",
+    "price": 164.94,
+    "stock": 8,
+    "company": "Logitech",
+    "description": "Description Logitech G910 Orion Spectrum",
+    "type": "qwerty"
+  },
+  {
+    "name": "Logitech G815 Lightspeed",
+    "price": 179.99,
+    "stock": 9,
+    "company": "Logitech",
+    "description": "Description Logitech G815 Lightspeed",
+    "type": "qwerty"
+  }]

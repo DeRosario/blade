@@ -1,0 +1,120 @@
+.wrapper {
+  padding: 0 20vw;
+
+  .main-title {
+    position: relative;
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      font-size: 2vw;
+      color: #323131;
+    }
+  }
+
+  .content-informations {
+    font-size: .8vw;
+    display: flex;
+    justify-content: space-around;
+
+    .complementary {
+
+      .screens-connectors {
+        display: flex;
+        margin-top: -1em;
+
+        .connectors {
+          padding-left: 1vw;
+        }
+      }
+    }
+  }
+
+  .content-stocks {
+    margin-top: 8%;
+
+    .title-wrapper {
+      text-align: center;
+
+      p.title {
+        font-size: 2vw;
+        color: #bd2c1d;
+      }
+    }
+
+    .content {
+      text-align: center;
+
+      .stocks {
+        font-size: 1.5vw;
+      }
+    }
+
+    .actions-stock {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        border: #344058 0.05vw solid;
+        height: 3vh;
+        border-radius: 0.2vw;
+        font-size: 0.7vw;
+        padding-left: 0.2vw;
+        width: 2vw;
+        text-align: center;
+
+        &::placeholder {
+          color: #DEE1E6;
+          padding-left: 0.2vw;
+        }
+      }
+
+      button {
+        margin-top: 5vh;
+        background: none;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: .8vw;
+        padding: .6vw;
+        width: 15%;
+        transition: .2s;
+        font-size: .8vw;
+
+        &.remove-all-stock {
+          border: 0.1vw solid #bd2c1d;
+          color: #bd2c1d;
+          margin-left: 4.4vw;
+
+          &:hover {
+            background-color: #bd2c1d;
+            color: white;
+          }
+        }
+
+
+        &.remove-some-stock {
+          border: 0.1vw solid #f39e04;
+          color: #f39e04;
+          margin-left: 2vw;
+
+          &:hover {
+            background-color: #f39e04;
+            color: white;
+          }
+        }
+
+        &.add-stock {
+          border: 0.1vw solid #187cf7;
+          color: #187cf7;
+          margin-left: 2vw;
+
+          &:hover {
+            background-color: #187cf7;
+            color: white;
+          }
+        }
+      }
+
+    }
+  }
+}
