@@ -9,6 +9,8 @@ cp -R ./app/keys ../build/app/keys
 cd ../build
 npm install
 
+## MAIN BACKEND BUILD
+echo '#################### BUILD FRONTEND ###################'
 cd ../frontend
 npm install
 npm audit fix
