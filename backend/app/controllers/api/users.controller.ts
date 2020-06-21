@@ -33,6 +33,13 @@ export default class UsersController extends Controller {
     }
 
     DAOFactory.getUsersDAO().getUserByEmail(email).then((user: UserModel) => {
+      if (user === undefined) {
+        request.session!.connected = false;
+        return response.status(401).json({
+          logged: request.session!.connected,
+          message: 'Your email or password is incorrect'
+        });
+      }
       if (HasherService.compareTwoHash(password, user.getPassword())) {
         request.session!.regenerate((err) => {
           if (err) {
