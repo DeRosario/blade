@@ -5,7 +5,7 @@ const validatorSchema: {} = {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
-      required: ['firstName', 'lastName', 'email', 'password', 'admin', 'activated'],
+      required: ['firstName', 'lastName', 'email', 'password'],
       properties: {
         firstName: {
           bsonType: 'string',
@@ -22,20 +22,12 @@ const validatorSchema: {} = {
         password: {
           bsonType: 'string',
           description: 'must be a string and is required'
-        },
-        admin: {
-          bsonType: 'bool',
-          description: 'must be a boolean and is required'
-        },
-        activated: {
-          bsonType: 'bool',
-          description: 'must be an boolean and is required'
         }
       }
     }
   }
 };
-const keys: string[] = ['firstName', 'lastName', 'email', 'password', 'admin', 'activated'];
+const keys: string[] = ['firstName', 'lastName', 'email', 'password'];
 
 export default class UsersContract extends BaseContract {
   constructor() {
