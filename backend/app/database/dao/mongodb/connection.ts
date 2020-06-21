@@ -17,7 +17,7 @@ export default abstract class ConnectionMongoDBManager {
 		new ScreensContract()
 	];
 
-	private static DB_HOST = 'dev-blade-db-container';
+	private static DB_HOST = 'blade-db-container';
 	private static DB_PORT = '27017';
 	private static DB_NAME = 'blade';
 

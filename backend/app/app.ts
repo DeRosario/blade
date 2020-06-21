@@ -42,7 +42,7 @@ export default class App {
 
     const MongoStore = connectMongo(session);
     const sessionStore = new MongoStore({
-      url: 'mongodb://dev-blade-db-container:27017/bladeSessions'
+      url: 'mongodb://blade-db-container:27017/bladeSessions'
     });
 
     const cookieOptions = {
