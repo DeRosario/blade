@@ -1,0 +1,48 @@
+h1 {
+  color: #a50404;
+  text-align: center;
+  font-size: 3vw;
+}
+
+.menu-home-link {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a.home-link-parts {
+  font-size: 2vw;
+}
+
+a.home-logo {
+  position: absolute;
+  top: 5%;
+  left: 0.5%;
+  font-size: 1.5vw;
+}
+
+tr {
+  padding-bottom: 5vh;
+}
+
+td {
+  width: 33vw;
+  vertical-align: top;
+}
+
+td.users-api {
+    width: 49.5vw;
+    vertical-align: top;
+}
+
+.get {
+  color: #61affe;
+}
+
+.put {
+  color: #fca130;
+}
+
+.post {
+  color: #49cc90;
+}

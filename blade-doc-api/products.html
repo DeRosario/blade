@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+  <title>API Doc</title>
+</head>
+
+<body>
+  <h1>Blade's Test API documentation</h1>
+  <a class="home-logo" href="./index.html">HOME</a>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <h2 class="title">Keyboards</h2>
+          <h3 class="get">GET: /api/keyboards/:id</h3>
+          <p class="description"><b>Description: </b>Return all keyboards</p>
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/keyboards/getall.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/keyboards/error500all.JPG" alt="">
+          </div>
+        </td>
+
+        <td>
+          <h2 class="title">Mouses</h2>
+          <h3 class="get">GET: /api/mouses/:id</h3>
+          <p class="description"><b>Description: </b>Return all mouses</p>
+          <div class="section-mouses">
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/mouses/getall.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/mouses/error500all.JPG" alt="">
+          </div>
+        </td>
+
+        <td>
+          <h2 class="title">Screens</h2>
+          <h3 class="get">GET: /api/screens/:id</h3>
+          <p class="description"><b>Description: </b>Return all screens</p>
+          <div class="section-screens">
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/screens/getall.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/screens/error500all.JPG" alt="">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <h3 class="get">GET: /api/keyboards/:id</h3>
+          <p class="description"><b>Description: </b>Return one specific keyboard</p>
+          <p class="params"><b>Parameters:</b><br>id: string (Object ID)</p>
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/keyboards/getone.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/keyboards/error500one.JPG" alt="">
+          </div>
+        </td>
+
+        <td>
+          <h3 class="get">GET: /api/mouses/:id</h3>
+          <p class="description"><b>Description: </b>Return one specific keyboard</p>
+          <p class="params"><b>Parameters:</b><br>id: string (Object ID)</p>
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/mouses/getone.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/mouses/error500one.JPG" alt="">
+          </div>
+        </td>
+
+        <td>
+          <h3 class="get">GET: /api/screens/:id</h3>
+          <p class="description"><b>Description: </b>Return one specific keyboard</p>
+          <p class="params"><b>Parameters:</b><br>id: string (Object ID)</p>
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/screens/getone.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/screens/error500one.JPG" alt="">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <h3 class="put">PUT: /api/keyboards/:id</h3>
+          <p class="description"><b>Description: </b>Update the stock of one specific product</p>
+          <p class="params"><b>Parameters:</b><br>id: string (Object ID)</p>
+          <p class="body"><b>Body:</b></p>
+          <img src="./images/keyboards/bodyput.JPG" alt="">
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200: true</p>
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/keyboards/error500put.JPG" alt="">
+          </div>
+        </td>
+
+        <td>
+          <h3 class="put">PUT: /api/mouses/:id</h3>
+          <p class="description"><b>Description: </b>Update the stock of one specific product</p>
+          <p class="params"><b>Parameters:</b><br>id: string (Object ID)</p>
+          <p class="body"><b>Body:</b></p>
+          <img src="./images/mouses/bodyput.JPG" alt="">
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200: true</p>
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/mouses/error500put.JPG" alt="">
+          </div>
+        </td>
+
+        <td>
+          <h3 class="put">PUT: /api/screens/:id</h3>
+          <p class="description"><b>Description: </b>Update the stock of one specific product</p>
+          <p class="params"><b>Parameters:</b><br>id: string (Object ID)</p>
+          <p class="body"><b>Body:</b></p>
+          <img src="./images/screens/bodyput.JPG" alt="">
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200: true</p>
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/screens/error500put.JPG" alt="">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

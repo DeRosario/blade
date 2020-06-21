@@ -34,7 +34,7 @@ export default class UsersController extends Controller {
 
     DAOFactory.getUsersDAO().getUserByEmail(email).then((user: UserModel) => {
       if (!user.getActivated()) {
-        return response.status(403).json({
+        return response.status(401).json({
           message: 'account deactivated'
         });
       } else if (HasherService.compareTwoHash(password, user.getPassword())) {
@@ -78,7 +78,7 @@ export default class UsersController extends Controller {
         });
       }
       if (UserValidator.checkObjectid(await DAOFactory.getUsersDAO().add(user))) {
-        return response.status(200).json({
+        return response.status(201).json({
           message: 'user created'
         });
       }
@@ -87,7 +87,7 @@ export default class UsersController extends Controller {
       if (e.message === 'INTERNAL_ERROR') {
         e.globalError = 'An error has occurred.';
       }
-      return response.status(400).json(e);
+      return response.status(500).json(e);
     }
   }
 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+  <title>API Doc</title>
+</head>
+
+<body>
+  <h1>Blade's Test API documentation</h1>
+  <a class="home-logo" href="./index.html">HOME</a>
+  <table>
+    <tbody>
+      <tr>
+        <td class="users-api">
+          <h2 class="title">Users</h2>
+          <h3 class="post">POST: /connection/login</h3>
+          <p class="description"><b>Description: </b>Login user</p>
+          <p class="body"><b>Body:</b></p>
+          <img src="./images/login/bodylogin.JPG" alt="">
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/login/connectionsucceed.JPG" alt="">
+            <p class="subtitle-response-401">Response Status 401:</p>
+            <img src="./images/login/connectionmiss.JPG" alt="">
+            <img src="./images/login/accountdeactivated.JPG" alt="">
+            <p class="subtitle-response-500">Response Status 500:</p>
+            <img src="./images/login/cookieregenfail.JPG" alt="">
+            <img src="./images/login/enteremailandpassword.JPG" alt="">
+            <img src="./images/login/validemail.JPG" alt="">
+          </div>
+        </td>
+
+        <td class="users-api">
+          <h3 class="post">POST: /connection/create</h3>
+          <p class="description"><b>Description: </b>Create user</p>
+          <p class="body"><b>Body:</b></p>
+          <img src="./images/login/create/body.JPG" alt="">
+          <div class="section-mouses">
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 201:</p>
+            <img src="./images/login/create/usercreated.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 400:</p>
+            <img src="./images/login/create/emailexist.JPG" alt="">
+            <p class="subtitle-response-500">Response Status 500:</p>
+            <img src="./images/login/create/erroroccured.JPG" alt="">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="users-api">
+          <h3 class="get">GET: /connection/check-auth</h3>
+          <p class="description"><b>Description: </b>Return login status</p>
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200: true</p>
+                <p class="subtitle-response-200">Response Status 200: false</p>
+          </div>
+        </td>
+
+        <td class="users-api">
+          <h3 class="get">GET: /api/users/logout</h3>
+          <p class="description"><b>Description: </b>Logout user</p>
+          <div>
+            <p class="subtitle-response"><b>Responses</b></p>
+            <p class="subtitle-response-200">Response Status 200:</p>
+            <img src="./images/login/logout/logoutsucceed.JPG" alt="">
+            <img src="./images/login/logout/alreadydisconect.JPG" alt="">
+            <p class="subtitle-response-200">Response Status 500:</p>
+            <img src="./images/login/logout/error.JPG" alt="">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

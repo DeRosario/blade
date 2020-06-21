@@ -35,7 +35,7 @@ export default abstract class ProductsController extends Controller {
       return response.status(200).json(result);
     }).catch((reason) => {
       console.log(reason);
-      return response.status(500).json({ message: 'An error occured, please try later.' });
+      return response.status(500).json({ message: `An error occured, updating ${this.category} stock's product` });
     });
   }
 }
