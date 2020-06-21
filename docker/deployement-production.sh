@@ -9,7 +9,7 @@ cp -R ./app/keys ../build/app/keys
 cd ../build
 npm install
 
-## MAIN BACKEND BUILD
+## MAIN FRONTEND BUILD
 echo '#################### BUILD FRONTEND ###################'
 cd ../frontend
 npm install
