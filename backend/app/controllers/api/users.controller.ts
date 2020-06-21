@@ -33,11 +33,7 @@ export default class UsersController extends Controller {
     }
 
     DAOFactory.getUsersDAO().getUserByEmail(email).then((user: UserModel) => {
-      if (!user.getActivated()) {
-        return response.status(401).json({
-          message: 'account deactivated'
-        });
-      } else if (HasherService.compareTwoHash(password, user.getPassword())) {
+      if (HasherService.compareTwoHash(password, user.getPassword())) {
         request.session!.regenerate((err) => {
           if (err) {
             return response.status(500).json({

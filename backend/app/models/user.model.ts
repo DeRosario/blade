@@ -5,7 +5,7 @@ import Model from './model';
 
 export default class UserModel extends Model {
 
-	constructor(private lastName: string, private firstName: string, private email: string, private password: string, private admin: boolean, private activated: boolean, id ?: ObjectID) {
+	constructor(private lastName: string, private firstName: string, private email: string, private password: string, id ?: ObjectID) {
 		super(id);
 	}
 
@@ -39,22 +39,6 @@ export default class UserModel extends Model {
 
 	setPassword(password: string): void {
 		this.password = password;
-	}
-
-	getAdmin(): boolean {
-		return this.admin;
-	}
-
-	setAdmin(admin: boolean): void {
-		this.admin = admin;
-	}
-
-	getActivated(): boolean {
-		return this.activated;
-	}
-
-	setActivated(activated: boolean): void {
-		this.activated = activated;
 	}
 
 	toJson(): object {
