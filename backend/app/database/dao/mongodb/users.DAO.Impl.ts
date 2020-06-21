@@ -28,7 +28,10 @@ export default class UsersDAOImpl extends BaseDAOImpl < UserModel > implements U
 
   parseIn(item: UserModel) {
     return {
-
+      firstName: item.getFirstName(),
+      lastName: item.getLastName(),
+      email: item.getEmail(),
+      password: item.getPassword()
     };
   }
 
