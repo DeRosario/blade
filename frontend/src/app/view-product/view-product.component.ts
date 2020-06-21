@@ -11,9 +11,15 @@ import {
 import {
   ProductModel
 } from './product.model';
-import { KeyboardModel } from '../models/keyboard.model';
-import { MouseModel } from '../models/mouse.model';
-import { ScreenModel } from '../models/screen.model';
+import {
+  KeyboardModel
+} from '../models/keyboard.model';
+import {
+  MouseModel
+} from '../models/mouse.model';
+import {
+  ScreenModel
+} from '../models/screen.model';
 
 @Component({
   selector: 'app-view-product',
@@ -53,7 +59,7 @@ export class ViewProductComponent implements OnInit {
           product.stock,
           product.description,
           product.type
-          );
+        );
       } else if (product.category === 'mouses') {
         this.productInformations = new MouseModel(
           product._id,
@@ -111,6 +117,8 @@ export class ViewProductComponent implements OnInit {
     this.viewProductService.removeStock(this.productInformations.getCategory(), this.productInformations.getId(), newStock).subscribe((result: boolean) => {
       if (result) {
         this.productInformations.setStock(newStock);
+        this.removeSomeStock = 0;
+        this.addSomeStock = 0;
       }
     }, (error) => {
       console.log('An error occured : Fail in removing stock');
@@ -122,6 +130,8 @@ export class ViewProductComponent implements OnInit {
     this.viewProductService.addStock(this.productInformations.getCategory(), this.productInformations.getId(), newStock).subscribe((result: boolean) => {
       if (result) {
         this.productInformations.setStock(newStock);
+        this.addSomeStock = 0;
+        this.removeSomeStock = 0;
       }
     }, (error) => {
       console.log('An error occured : Fail in adding stock');

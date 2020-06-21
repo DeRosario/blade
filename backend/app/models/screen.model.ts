@@ -1,71 +1,23 @@
 import {
   ObjectId
 } from 'mongodb';
-import Model from './model';
 import ScreenConnectorsModel from './screen-connectors.model';
+import ProductModel from './product.model';
 
-export default class ScreenModel extends Model {
+export default class ScreenModel extends ProductModel {
   constructor(
-    private category: string,
-    private name: string,
-    private price: number,
-    private stock: number,
-    private company: string,
-    private description: string,
+    category: string,
+    name: string,
+    price: number,
+    stock: number,
+    company: string,
+    description: string,
     private inches: number,
     private hz: number,
     private connectors: ScreenConnectorsModel,
     _id: ObjectId | undefined
   ) {
-    super(_id);
-  }
-
-  getCategory(): string {
-    return this.category;
-  }
-
-  setCategory(category: string): void {
-    this.category = category;
-  }
-
-  getName(): string {
-    return this.name;
-  }
-
-  setName(name: string): void {
-    this.name = name;
-  }
-
-  getPrice(): number {
-    return this.price;
-  }
-
-  setPrice(price: number): void {
-    this.price = price;
-  }
-
-  getStock(): number {
-    return this.stock;
-  }
-
-  setStock(stock: number): void {
-    this.stock = stock;
-  }
-
-  getCompany(): string {
-    return this.company;
-  }
-
-  setCompany(company: string): void {
-    this.company = company;
-  }
-
-  getDescription(): string {
-    return this.description;
-  }
-
-  setDescription(description: string): void {
-    this.description = description;
+    super(category, name, company, price, stock, description, _id);
   }
 
   getInches(): number {
