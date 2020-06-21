@@ -9,6 +9,11 @@ cp -R ./app/keys ../build/app/keys
 cd ../build
 npm install
 
+cd ../frontend
+npm install
+npm audit fix
+ng build --prod
+
 ##############
 ### IMAGES ###
 ##############
