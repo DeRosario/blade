@@ -38,8 +38,6 @@ export default class UsersDAOImpl extends BaseDAOImpl < UserModel > implements U
       datas.firstName,
       datas.email,
       datas.password,
-      datas.admin,
-      datas.activated,
       datas._id
     );
   }

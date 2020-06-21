@@ -62,9 +62,7 @@ export default abstract class UserValidator {
         request.body.lastName,
         request.body.firstName,
         request.body.email,
-        HasherService.hashPassword(request.body.password),
-        false,
-        true
+        HasherService.hashPassword(request.body.password)
       );
     } else {
       throw errors;
