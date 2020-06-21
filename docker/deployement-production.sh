@@ -2,7 +2,6 @@
 echo '#################### BUILD BLADE API ###################'
 cd ../backend
 npm install
-npm audit fix
 npm run tsc
 cp ./package.json ../build/
 cp -R ./app/keys ../build/app/keys
@@ -13,7 +12,6 @@ npm install
 echo '#################### BUILD FRONTEND ###################'
 cd ../frontend
 npm install
-npm audit fix
 ng build --prod
 
 ##############
